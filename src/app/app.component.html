@@ -1,3 +1,9 @@
-<h1>
-  {{title}}
-</h1>
+<div class="mdl-layout mdl-js-layout">
+  <app-header></app-header>
+  <main class="mdl-layout__content">
+    <div class="page-content"><router-outlet></router-outlet></div>
+    <footer class="mdl-mega-footer">
+      <app-footer></app-footer>
+    </footer>
+  </main>
+</div>
