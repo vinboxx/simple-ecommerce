@@ -1,0 +1,11 @@
+<div class="row" *ngFor="let displayFilter of displayFilters">
+    <div class="col-md-12">
+        <div class="checkbox" [class.disabled]="displayFilter.disabled">
+            <label>
+                <input type="checkbox" value="{{displayFilter.id}}" (click)="filter(displayFilter.id)" disabled *ngIf="displayFilter.disabled">
+                <input type="checkbox" value="{{displayFilter.id}}" (click)="filter(displayFilter.id)" *ngIf="!displayFilter.disabled">
+                {{displayFilter.name}} ({{displayFilter.count}})
+            </label>
+        </div>
+    </div>
+</div>
