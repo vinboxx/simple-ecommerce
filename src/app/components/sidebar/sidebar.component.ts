@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, EventEmitter } from '@angular/core';
-import { ProductService } from '../product.service';
-import { ProductModel } from "../catalog/product.model";
+import { Item } from '../../models/item.model';
+import { CatalogService } from '../../services/catalog.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,27 +9,27 @@ import { ProductModel } from "../catalog/product.model";
 })
 export class SidebarComponent implements OnInit, OnDestroy {
     private mergedFilters: any = {};
-    private subscriber: EventEmitter<ProductModel[]>;
+    private subscriber: EventEmitter<Item[]>;
     private activeFilters: string[] = [];
 
     displayFilters: any[] = [];
 
-    constructor(private _service: ProductService) {
+    constructor(private _service: CatalogService) {
     }
 
     ngOnInit() {
         /**
          * subscribe to the update event of ProductService to keep display filters in sync with actual data set
          */
-        this.subscriber = this._service.serviceEvent$.subscribe((products)=> {
+        this.subscriber = this._service.serviceEvent$.subscribe((products) => {
             this.processFilters(products);
         });
 
         /**
          * load all products and create display filters
          */
-        this._service.load().then((products)=> {
-            this.processFilters(products)
+        this._service.getCatalog().then((products) => {
+            this.processFilters(products);
         });
     }
 
@@ -43,8 +43,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
     /**
      * extract unique filters and counts from product
      */
-    private mergeFilters(product: ProductModel) {
-        product.filters.forEach((filterId: string)=> {
+    private mergeFilters(product: Item) {
+        product.filters.forEach((filterId: string) => {
             /** filter format "category:urlName:displayName" */
             let parts = filterId.split(':');
 
@@ -60,7 +60,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
                     name: parts[2],
                     count: 1,
                     disabled: false
-                }
+                };
             } else {
                 this.mergedFilters[filterId].count++;
             }
@@ -127,8 +127,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
     /**
      * iterate through all products and extract filter information
      */
-    private processFilters(products: ProductModel[]) {
-        products.forEach((product: ProductModel) => {
+    private processFilters(products: Item[]) {
+        products.forEach((product: Item) => {
             this.mergeFilters(product);
         });
 

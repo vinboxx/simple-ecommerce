@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +7,12 @@ import { RouterLink } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  appTitle = 'Ng2 Simple Cart';
+
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

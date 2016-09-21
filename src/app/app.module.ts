@@ -6,13 +6,14 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { routing,
          appRoutingProviders }  from './app.routing';
-import { CatalogComponent } from './catalog/catalog.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { HomeComponent } from './home/home.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { CatalogResultListComponent } from './catalog-result-list/catalog-result-list.component';
+import { CatalogComponent } from './components/catalog/catalog.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { CatalogResultListComponent } from './components/catalog-result-list/catalog-result-list.component';
+import { ProductComponent } from './components/product/product.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CatalogResultListComponent } from './catalog-result-list/catalog-result
     HomeComponent,
     PageNotFoundComponent,
     SidebarComponent,
-    CatalogResultListComponent
+    CatalogResultListComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
