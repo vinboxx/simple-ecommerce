@@ -6,4 +6,6 @@ export interface Item {
     rating?: number;
     filters?: string[];
     image?: string;
+    qty?: number;
+    totalPrice?: number;
 }

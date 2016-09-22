@@ -19,7 +19,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         /**
-         * subscribe to the update event of ProductService to keep display filters in sync with actual data set
+         * subscribe to the update event of CatalogService to keep display filters in sync with actual data set
          */
         this.subscriber = this._service.serviceEvent$.subscribe((products) => {
             this.processFilters(products);
@@ -35,7 +35,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         /**
-         * unsubscribe from ProductService event
+         * unsubscribe from CatalogService event
          */
         this.subscriber.unsubscribe();
     }

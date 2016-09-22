@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
-import { Item } from '../../models/item.model';
 import { CatalogService } from '../../services/catalog.service';
+import { Item } from '../../models/item.model';
+import { CartService } from "../../services/cart.service";
 
 @Component({
   selector: 'app-catalog-result-list',
@@ -14,7 +15,7 @@ export class CatalogResultListComponent implements OnInit {
     private products: Item[] = [];
     private productCount: number = 0;
 
-    constructor(private _service: CatalogService) {
+    constructor(private _service: CatalogService, private cartService: CartService) {
     }
 
     /**
@@ -54,11 +55,8 @@ export class CatalogResultListComponent implements OnInit {
      */
     addToCart(product: any) {
         this.isAddingProduct = product;
-        let self = this;
-        setTimeout(function () {
-            self.isAddingProduct = null;
-        }, 1000);
-
+        this.cartService.addItem(product);
+        this.isAddingProduct = null;
     }
 
 }
