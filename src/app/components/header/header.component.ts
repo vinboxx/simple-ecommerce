@@ -8,12 +8,23 @@ import { CartService } from "../../services/cart.service";
 })
 export class HeaderComponent implements OnInit {
 
-  appTitle = 'Ng2 Simple Cart';
-  cartTotalItem = 0;
+    appTitle = 'Ng2 Simple Cart';
+    cartTotalItem = 0;
+    cartTotalPrice = 0;
 
-  constructor(private cartService: CartService) {
-    this.cartTotalItem = this.cartService.getTotalItem();
-  }
+    constructor(private cartService: CartService) {
+        cartService.totalItem$.subscribe(
+            totalItem => {
+                this.cartTotalItem = totalItem;
+            }
+        );
+        cartService.totalPrice$.subscribe(
+            totalPrice => {
+                this.cartTotalPrice = totalPrice;
+            }
+        );
+        cartService.getCart();
+    }
 
   ngOnInit() {
   }

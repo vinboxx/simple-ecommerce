@@ -12,7 +12,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { CatalogResultListComponent } from './components/catalog-result-list/catalog-result-list.component';
 import { ProductComponent } from './components/product/product.component';
 
 @NgModule({
@@ -24,7 +23,6 @@ import { ProductComponent } from './components/product/product.component';
     HomeComponent,
     PageNotFoundComponent,
     SidebarComponent,
-    CatalogResultListComponent,
     ProductComponent
   ],
   imports: [

@@ -24,7 +24,7 @@
       <a class="mdl-navigation__link" routerLink="/" routerLinkActive="active">Home</a>
       <a class="mdl-navigation__link" routerLink="/catalog" routerLinkActive="active">Catalog</a>
       <a class="mdl-navigation__link" routerLink="/about-us" routerLinkActive="active">About us</a>
-      <a class="mdl-navigation__link" routerLink="/basket" routerLinkActive="active"><i class="material-icons">shopping_cart</i>({{cartTotalItem}})</a>
+      <a class="mdl-navigation__link" routerLink="/basket" routerLinkActive="active"><i class="material-icons">shopping_cart</i>({{cartTotalItem}}) {{cartTotalPrice | currency:'USD':true:'1.2-2'}}</a>
     </nav>
   </div>
 </header>

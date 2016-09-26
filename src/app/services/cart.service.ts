@@ -1,6 +1,7 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Item } from '../models/item.model';
 import { StorageService } from './storage.service';
+import { Subject } from 'rxjs/Subject';
 // import { DefaultCheckout, IDiscount } from './checkout.service';
 // import { discounts } from '../mock/discounts.mock.json';
 
@@ -10,8 +11,16 @@ export class CartService {
     private cart: Item[] = [];
     // private discount:IDiscount;
 
+    // Observable sources
+    private totalItemSource = new Subject<number>();
+    private totalPriceSource = new Subject<number>();
+
+    // Observable streams
+    totalItem$ = this.totalItemSource.asObservable();
+    totalPrice$ = this.totalPriceSource.asObservable();
+
     constructor(private storageService: StorageService){
-        this.cart = JSON.parse( this.storageService.read<string>('cart') ) || [];
+        this.getCart();
     }
 
     addItem(item: Item){
@@ -50,14 +59,14 @@ export class CartService {
     //     this.discount = discounts.filter(discount => discount.code == code)[0];
     // }
     getCart(): Item[]{
+        this.cart = JSON.parse( this.storageService.read<string>('cart') ) || [];
+        this.totalItemSource.next(this.cart.length);
+        this.totalPriceSource.next(this.getTotalPrice());
         return this.cart;
     }
     saveCart(){
         this.storageService.write('cart', JSON.stringify(this.cart));
         this.getCart();
-    }
-    getTotalItem(){
-        return this.cart.length || 0;
     }
     getTotalPrice(){
         let totalPrice = this.cart.reduce((sum, cartItem) => {
