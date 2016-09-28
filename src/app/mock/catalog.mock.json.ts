@@ -1,4 +1,6 @@
-export var CatalogMock = [{
+import { Item } from '../models/item.model';
+
+export var CatalogMock: Item[] = [{
     id: 1,
     name: 'Iphone 6S',
     description: 'New phone from Apple',

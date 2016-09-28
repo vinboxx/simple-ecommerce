@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter  } from '@angular/core';
+import { Router } from '@angular/router';
 import { CatalogService } from '../../services/catalog.service';
 import { CartService } from "../../services/cart.service";
 import { Item } from '../../models/item.model';
@@ -19,10 +20,11 @@ export class CatalogComponent implements OnInit {
     private isAddingProduct: boolean = false;
     private products: Item[] = [];
     private productCount: number = 0;
+    selectedProduct: Item;
 
     subscription: Subscription;
 
-    constructor(private catalogService: CatalogService, private cartService: CartService) {
+    constructor(private catalogService: CatalogService, private cartService: CartService, private router: Router) {
         this.subscription = cartService.totalItem$.subscribe(
             totalItem => {}
         );
@@ -69,6 +71,11 @@ export class CatalogComponent implements OnInit {
         this.isAddingProduct = product;
         this.cartService.addItem(product);
         this.isAddingProduct = null;
+    }
+
+    gotoDetail(product: Item) {
+        this.router.navigate(['/item', product.id]);
+        return false;
     }
 
     /**

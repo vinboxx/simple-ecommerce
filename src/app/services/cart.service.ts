@@ -100,6 +100,7 @@ export class CartService {
 
         if(this.cart && this.cart.length) {
             for (var lineItem of this.cart) {
+                lineItem.qty = lineItem.qty * 1;
                 lineItem.totalPrice = lineItem.qty * lineItem.price;
             }
         }

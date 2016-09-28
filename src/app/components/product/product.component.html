@@ -1,3 +1,14 @@
-<p>
-  product works!
-</p>
+<div class="mdl-grid" *ngIf="product">
+    <div class="mdl-cell mdl-cell--6-col">
+        <img [src]="product.image" alt="">
+    </div>
+    <div class="mdl-cell mdl-cell--4-col">
+        <h1 class="mdl-card__title-text">{{product.name}}</h1>
+        <p *ngIf="product.rating">Rating: {{product.rating}}</p>
+        <p>Price: {{product.price}}</p>
+        <button class="mdl-button mdl-button--colored mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+            (click)="addToCart(product)" >
+            Buy
+        </button>
+    </div>
+</div>

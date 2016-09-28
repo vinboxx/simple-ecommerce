@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from "../../services/cart.service";
 import { Item } from '../../models/item.model';
 
@@ -11,7 +12,7 @@ export class CartComponent implements OnInit {
 
     private cart;
 
-    constructor(private cartService: CartService) {
+    constructor(private cartService: CartService, private router: Router) {
         this.cart = cartService.getCart();
     }
 
@@ -32,6 +33,11 @@ export class CartComponent implements OnInit {
     clearCart() {
         this.cartService.clearCart();
         this.cart = this.cartService.getCart();
+    }
+
+    gotoDetail(product: Item) {
+        this.router.navigate(['/item', product.id]);
+        return false;
     }
 
 }

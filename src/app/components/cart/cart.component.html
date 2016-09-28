@@ -14,7 +14,9 @@
                 <tr *ngFor="let product of cart">
                     <td class="mdl-data-table__cell--non-numeric">
                         <img src="{{product.image}}" alt="" class="item-image">
-                        {{product.name}}
+                        <a href="/item/{{product.id}}" (click)="gotoDetail(product)">
+                            {{product.name}}
+                        </a>
                     </td>
                     <td class="col-unit">
                         <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" [value]="product.qty"
