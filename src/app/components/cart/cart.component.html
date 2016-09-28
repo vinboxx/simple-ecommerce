@@ -1,0 +1,43 @@
+<div class="mdl-grid basket-container">
+    <div *ngIf="cart.length > 0">
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">Material</th>
+                    <th>Quantity</th>
+                    <th>Unit price</th>
+                    <th>Total price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of cart">
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <img src="{{product.image}}" alt="" class="item-image">
+                        {{product.name}}
+                    </td>
+                    <td class="col-unit">
+                        <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" [value]="product.qty"
+                        (keyup)="updateItem(product, $event)"
+                        (change)="updateItem(product, $event)">
+                    </td>
+                    <td>{{product.price | currency:'USD':true:'1.2-2'}}</td>
+                    <td>{{product.totalPrice | currency:'USD':true:'1.2-2'}}</td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon" (click)="deleteItem(product)">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" (click)="clearCart()">
+                Empty basket
+            </button>
+        </div>
+    </div>
+    <div *ngIf="cart.length === 0">
+        No item in basket
+    </div>
+</div>

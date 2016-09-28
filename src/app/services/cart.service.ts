@@ -20,7 +20,7 @@ export class CartService {
     totalPrice$ = this.totalPriceSource.asObservable();
 
     constructor(private storageService: StorageService){
-        this.getCart();
+        this.refreshCart();
     }
 
     addItem(item: Item){
@@ -47,6 +47,20 @@ export class CartService {
 
         this.saveCart();
     }
+
+    updateItem(item: Item){
+        // Update exist item
+        if(this.cart && this.cart.length) {
+            for (var lineItem of this.cart) {
+                if(lineItem.id == item.id) {
+                    lineItem.qty = item.qty;
+                    lineItem.totalPrice = lineItem.qty * lineItem.price;
+                }
+            }
+        }
+
+        this.saveCart();
+    }
     deleteItem(item:Item){
         this.cart = this.cart.filter(cartItem => cartItem.id !== item.id);
         this.saveCart();
@@ -58,15 +72,20 @@ export class CartService {
     // applyDiscount(code:string){
     //     this.discount = discounts.filter(discount => discount.code == code)[0];
     // }
-    getCart(): Item[]{
+    refreshCart(): Item[]{
         this.cart = JSON.parse( this.storageService.read<string>('cart') ) || [];
-        this.totalItemSource.next(this.cart.length);
-        this.totalPriceSource.next(this.getTotalPrice());
+        this.recalculateCart();
+        return this.cart;
+    }
+    getCart(): Item[]{
         return this.cart;
     }
     saveCart(){
         this.storageService.write('cart', JSON.stringify(this.cart));
-        this.getCart();
+        this.recalculateCart();
+    }
+    getTotalItem(){
+        return this.cart.length;
     }
     getTotalPrice(){
         let totalPrice = this.cart.reduce((sum, cartItem) => {
@@ -76,6 +95,17 @@ export class CartService {
         //     totalPrice -= totalPrice=this.discount.amount;
         // }
         return totalPrice;
+    }
+    recalculateCart(){
+
+        if(this.cart && this.cart.length) {
+            for (var lineItem of this.cart) {
+                lineItem.totalPrice = lineItem.qty * lineItem.price;
+            }
+        }
+
+        this.totalItemSource.next(this.cart.length);
+        this.totalPriceSource.next(this.getTotalPrice());
     }
 
 }

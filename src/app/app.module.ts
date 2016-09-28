@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ProductComponent } from './components/product/product.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ProductComponent } from './components/product/product.component';
     HomeComponent,
     PageNotFoundComponent,
     SidebarComponent,
-    ProductComponent
+    ProductComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

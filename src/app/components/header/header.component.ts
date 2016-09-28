@@ -23,7 +23,9 @@ export class HeaderComponent implements OnInit {
                 this.cartTotalPrice = totalPrice;
             }
         );
-        cartService.getCart();
+        let cart = cartService.getCart();
+        this.cartTotalItem = cartService.getTotalItem();
+        this.cartTotalPrice = cartService.getTotalPrice();
     }
 
   ngOnInit() {

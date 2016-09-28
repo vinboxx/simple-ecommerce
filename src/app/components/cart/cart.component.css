@@ -1,0 +1,21 @@
+.item-image {
+    width: 50px;
+}
+.mdl-textfield__input {
+    width: 50px;
+    text-align: right;
+    display: inline-block;
+}
+.basket-container {
+    max-width: 900px;
+    margin: auto;
+}
+.basket-container > div,
+.basket-container .mdl-data-table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.col-unit {
+    max-width: 100px;
+    text-align: right;
+}
