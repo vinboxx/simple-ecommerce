@@ -4,8 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { routing,
-         appRoutingProviders }  from './app.routing';
+import { SimpleEcommerceRoutingModule }  from './app-routing.module';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -31,10 +30,9 @@ import { CartComponent } from './components/cart/cart.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    SimpleEcommerceRoutingModule
   ],
   providers: [
-    appRoutingProviders
   ],
   bootstrap: [AppComponent]
 })
