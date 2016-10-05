@@ -15,7 +15,7 @@ export class StorageService {
     read<T>(key: string): T {
         let value: string = localStorage.getItem(key);
 
-        if (value && value != 'undefined' && value != 'null') {
+        if (value && value !== 'undefined' && value !== 'null') {
             return <T>JSON.parse(value);
         }
 

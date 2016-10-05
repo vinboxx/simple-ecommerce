@@ -19,18 +19,18 @@ export class CartService {
     totalItem$ = this.totalItemSource.asObservable();
     totalPrice$ = this.totalPriceSource.asObservable();
 
-    constructor(private storageService: StorageService){
+    constructor(private storageService: StorageService) {
         this.refreshCart();
     }
 
-    addItem(item: Item){
+    addItem(item: Item) {
 
         let itemExist = false;
 
         // Update exist item
-        if(this.cart && this.cart.length) {
-            for (var lineItem of this.cart) {
-                if(lineItem.id == item.id) {
+        if (this.cart && this.cart.length) {
+            for (let lineItem of this.cart) {
+                if (lineItem.id === item.id) {
                     lineItem.qty += 1;
                     lineItem.totalPrice = lineItem.qty * lineItem.price;
                     itemExist = true;
@@ -39,7 +39,7 @@ export class CartService {
         }
 
         // Add new item
-        if(!itemExist) {
+        if (!itemExist) {
             item.qty = 1;
             item.totalPrice = item.price;
             this.cart.push(item);
@@ -48,11 +48,11 @@ export class CartService {
         this.saveCart();
     }
 
-    updateItem(item: Item){
+    updateItem(item: Item) {
         // Update exist item
-        if(this.cart && this.cart.length) {
-            for (var lineItem of this.cart) {
-                if(lineItem.id == item.id) {
+        if (this.cart && this.cart.length) {
+            for (let lineItem of this.cart) {
+                if (lineItem.id === item.id) {
                     lineItem.qty = item.qty;
                     lineItem.totalPrice = lineItem.qty * lineItem.price;
                 }
@@ -61,45 +61,45 @@ export class CartService {
 
         this.saveCart();
     }
-    deleteItem(item:Item){
+    deleteItem(item: Item) {
         this.cart = this.cart.filter(cartItem => cartItem.id !== item.id);
         this.saveCart();
     }
-    clearCart(){
+    clearCart() {
         this.cart = [];
         this.saveCart();
     }
     // applyDiscount(code:string){
     //     this.discount = discounts.filter(discount => discount.code == code)[0];
     // }
-    refreshCart(): Item[]{
+    refreshCart(): Item[] {
         this.cart = JSON.parse( this.storageService.read<string>('cart') ) || [];
         this.recalculateCart();
         return this.cart;
     }
-    getCart(): Item[]{
+    getCart(): Item[] {
         return this.cart;
     }
-    saveCart(){
+    saveCart() {
         this.storageService.write('cart', JSON.stringify(this.cart));
-        this.recalculateCart();
+        this.refreshCart();
     }
-    getTotalItem(){
+    getTotalItem() {
         return this.cart.length;
     }
-    getTotalPrice(){
+    getTotalPrice() {
         let totalPrice = this.cart.reduce((sum, cartItem) => {
             return sum += cartItem.totalPrice, sum;
-        },0);
+        }, 0);
         // if(this.discount){
         //     totalPrice -= totalPrice=this.discount.amount;
         // }
         return totalPrice;
     }
-    recalculateCart(){
+    recalculateCart() {
 
-        if(this.cart && this.cart.length) {
-            for (var lineItem of this.cart) {
+        if (this.cart && this.cart.length) {
+            for (let lineItem of this.cart) {
                 lineItem.qty = lineItem.qty * 1;
                 lineItem.totalPrice = lineItem.qty * lineItem.price;
             }

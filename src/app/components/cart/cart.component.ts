@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { CartService } from "../../services/cart.service";
+import { CartService } from '../../services/cart.service';
 import { Item } from '../../models/item.model';
 
 @Component({
@@ -8,15 +8,12 @@ import { Item } from '../../models/item.model';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit {
+export class CartComponent {
 
     private cart;
 
     constructor(private cartService: CartService, private router: Router) {
         this.cart = cartService.getCart();
-    }
-
-    ngOnInit() {
     }
 
     updateItem(item: Item, event: any) {

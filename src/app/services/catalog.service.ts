@@ -18,13 +18,10 @@ export class CatalogService {
         );
     }
 
-    setCatalog(catalog: Item[]) {
-        this.catalog = catalog;
-    }
-
     getById(id: number): Promise<Item> {
-        return this.getCatalog()
-               .then(products => products.find(item => item.id === id ));
+        return this.getCatalog().then(
+            products => products.find(item => item.id === id )
+        );
     }
 
     /**

@@ -37,7 +37,9 @@ export class SidebarComponent implements OnInit, OnDestroy {
         /**
          * unsubscribe from CatalogService event
          */
-        this.subscriber.unsubscribe();
+        if (this.subscriber) {
+            this.subscriber.unsubscribe();
+        }
     }
 
     /**
@@ -128,9 +130,11 @@ export class SidebarComponent implements OnInit, OnDestroy {
      * iterate through all products and extract filter information
      */
     private processFilters(products: Item[]) {
-        products.forEach((product: Item) => {
-            this.mergeFilters(product);
-        });
+        if (products.length) {
+            products.forEach((product: Item) => {
+                this.mergeFilters(product);
+            });
+        }
 
         this.processMergedFilters();
     }

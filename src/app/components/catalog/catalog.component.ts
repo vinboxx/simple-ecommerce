@@ -1,17 +1,16 @@
-import { Component, OnInit, EventEmitter  } from '@angular/core';
+import { Component, OnInit, OnDestroy, EventEmitter  } from '@angular/core';
 import { Router } from '@angular/router';
 import { CatalogService } from '../../services/catalog.service';
-import { CartService } from "../../services/cart.service";
+import { CartService } from '../../services/cart.service';
 import { Item } from '../../models/item.model';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.css'],
-  providers: [CatalogService]
+  styleUrls: ['./catalog.component.css']
 })
-export class CatalogComponent implements OnInit {
+export class CatalogComponent implements OnInit, OnDestroy {
 
     public catalog: Item[] = [];
     public search: string = '';
@@ -45,22 +44,30 @@ export class CatalogComponent implements OnInit {
         /**
          * load all products to display the initial list
          */
-        this.catalogService.getCatalog().then((products: Item[]) => {
-            this.catalog = products;
-            this.updateProducts(products);
-        });
+        this.getCatalog();
     }
 
     ngOnDestroy() {
         /**
          * unsubscribe from CatalogService event
          */
-        this.subscriber.unsubscribe();
+        if (this.subscriber) {
+            this.subscriber.unsubscribe();
+        }
 
         /**
          * unsubscribe from CartService event
          */
-        this.subscription.unsubscribe();
+        if (this.subscriber) {
+            this.subscription.unsubscribe();
+        }
+    }
+
+    getCatalog(): Promise<Item[]> {
+        return this.catalogService.getCatalog().then((products: Item[]) => {
+            this.catalog = products;
+            this.updateProducts(products);
+        });
     }
 
     /**

@@ -1,11 +1,22 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { FooterComponent } from './footer.component';
 
+let fixture: ComponentFixture<FooterComponent>;
+
 describe('Component: Footer', () => {
-  it('should create an instance', () => {
-    let component = new FooterComponent();
-    expect(component).toBeTruthy();
-  });
+    beforeEach(() => {
+        // Refine the test module by declaring the test component
+        TestBed.configureTestingModule({
+            declarations: [ FooterComponent ]
+        });
+
+        // Create component and test fixture
+        fixture = TestBed.createComponent(FooterComponent);
+    });
+
+    it('should create an instance', () => {
+        expect(fixture).toBeTruthy();
+    });
 });
