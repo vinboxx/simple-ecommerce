@@ -4,7 +4,7 @@ import { TestBed, async, inject, ComponentFixture } from '@angular/core/testing'
 import { Router } from '@angular/router';
 
 import { CatalogComponent } from './catalog.component';
-import { SidebarComponent } from '../sidebar/sidebar.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 import { CatalogService } from '../../services/catalog.service';
 import { CartService } from '../../services/cart.service';
 import { StorageService } from '../../services/storage.service';

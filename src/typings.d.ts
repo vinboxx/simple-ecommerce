@@ -3,3 +3,7 @@
 // https://www.typescriptlang.org/docs/handbook/writing-declaration-files.html
 
 declare var System: any;
+
+interface NodeRequire {
+    ensure: (paths: string[], callback: (require: <T>(path: string) => T) => void, name?:string ) => void;
+}

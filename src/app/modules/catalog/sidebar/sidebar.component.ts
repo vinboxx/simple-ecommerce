@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, EventEmitter } from '@angular/core';
-import { Item } from '../../models/item.model';
-import { CatalogService } from '../../services/catalog.service';
+import { Item } from '../../../models/item.model';
+import { CatalogService } from '../../../services/catalog.service';
 
 @Component({
   selector: 'app-sidebar',

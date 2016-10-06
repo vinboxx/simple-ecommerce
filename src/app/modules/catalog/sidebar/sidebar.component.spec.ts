@@ -4,9 +4,9 @@ import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { Item } from '../../models/item.model';
+import { Item } from '../../../models/item.model';
 import { SidebarComponent } from './sidebar.component';
-import { CatalogService } from '../../services/catalog.service';
+import { CatalogService } from '../../../services/catalog.service';
 
 let comp: SidebarComponent;
 let fixture: ComponentFixture<SidebarComponent>;
