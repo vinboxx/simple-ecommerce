@@ -1,0 +1,25 @@
+{
+    "app title": "Ng2 Simple Cart",
+    "button": {
+        "buy": "Buy"
+    },
+    "cart.product" : "Product",
+    "cart.quantity" : "Quantity",
+    "cart.unit_price" : "Unit price",
+    "cart.total_price" : "Total price",
+    "cart.empty_basket" : "Empty basket",
+    "cart.no_item" : "No item in basket",
+    "hello world": "hello world",
+    "hello greet": "Hello, {{txt1}} {{txt2}}!",
+    "well done": "Well done {{name}}",
+    "good bye": "bye bye",
+    "topmenu": {
+        "home": "Home",
+        "catalog": "catalog",
+        "aboutus": "about us"
+    },
+    "product.price": "Price",
+    "product.rating": "Rating",
+    "page_not_found": "Page not found",
+    "matching products": "Matching Products"
+}

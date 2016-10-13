@@ -1,3 +1,24 @@
-<p>
-  home works!
-</p>
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--12-col">
+        <!--multiple value-->
+        <p>
+            Translate <strong class="text-muted">Hello, {{txt1}<!---->} {{txt2}<!---->}!</strong>:
+        <br>
+            <strong>{{ 'hello greet' | translate:{ txt1: 'Jane', txt2: 'Doe' } }}</strong>
+        </p>
+
+        <!--single value-->
+        <p>
+            Translate <strong class="text-muted">Well done {{name}<!---->}</strong>:
+            <br>
+            <strong>{{ 'well done' | translate:{ name: 'Tony' } }}</strong>
+        </p>
+
+        <!--No translate text-->
+        <p>
+          Translate <strong class="text-muted">Good bye (fallback to EN)</strong>:
+          <br>
+          <strong>{{ 'good bye' | translate }}</strong>
+        </p>
+    </div>
+</div>

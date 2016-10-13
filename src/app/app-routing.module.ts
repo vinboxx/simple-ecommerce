@@ -9,11 +9,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 const routes: Routes = [
   {
     path: 'catalog',
-    loadChildren: () => new Promise(function (resolve) {
-        require.ensure([], function (require) {
-            resolve(require('./modules/catalog/catalog.module')['CatalogModule']);
-        });
-    })
+    loadChildren: './modules/catalog/catalog.module#CatalogModule'
   },
   { path: 'item/:id', component: ProductComponent },
   { path: 'basket', component: CartComponent },

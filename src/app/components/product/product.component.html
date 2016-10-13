@@ -4,11 +4,11 @@
     </div>
     <div class="mdl-cell mdl-cell--4-col">
         <h1 class="mdl-card__title-text">{{product.name}}</h1>
-        <p *ngIf="product.rating">Rating: {{product.rating}}</p>
-        <p>Price: {{product.price}}</p>
+        <p *ngIf="product.rating">{{ 'product.rating' | translate }}: {{product.rating}}</p>
+        <p>{{ 'product.price' | translate }}: {{product.price}}</p>
         <button class="mdl-button mdl-button--colored mdl-js-button mdl-button--raised mdl-js-ripple-effect"
             (click)="addToCart(product)" >
-            Buy
+            {{ 'button.buy' | translate }}
         </button>
     </div>
 </div>

@@ -1,0 +1,24 @@
+{
+    "app title": "Ng2 简单购物车",
+    "button": {
+        "buy": "购买"
+    },
+    "cart.product" : "产品",
+    "cart.quantity" : "数量",
+    "cart.unit_price" : "单价",
+    "cart.total_price" : "总价格",
+    "cart.empty_basket" : "删除篮子",
+    "cart.no_item" : "没有在篮子里的项目",
+    "hello world": "你好，世界",
+    "hello greet": "你好, {{txt1}} {{txt2}}!",
+    "well done": "干得好, {{name}}",
+    "topmenu": {
+        "home": "家",
+        "catalog": "目录",
+        "aboutus": "关于我们"
+    },
+    "product.price": "价钱",
+    "product.rating": "评分",
+    "page_not_found": "找不到网页",
+    "matching products": "匹配产品"
+}
