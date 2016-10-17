@@ -26,7 +26,7 @@
                     <td>{{product.price | currency:'USD':true:'1.2-2'}}</td>
                     <td>{{product.totalPrice | currency:'USD':true:'1.2-2'}}</td>
                     <td>
-                        <button class="mdl-button mdl-js-button mdl-button--icon" (click)="deleteItem(product)">
+                        <button class="mdl-button mdl-js-button mdl-button--icon delete-btn" (click)="deleteItem(product)">
                             <i class="material-icons">delete</i>
                         </button>
                     </td>
@@ -34,7 +34,7 @@
             </tbody>
         </table>
         <div>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" (click)="clearCart()">
+            <button id="empty-cart" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" (click)="clearCart()">
                 Empty basket
             </button>
         </div>

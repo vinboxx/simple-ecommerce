@@ -12,6 +12,7 @@ exports.config = {
   capabilities: {
     'browserName': 'chrome'
   },
+  // chromeDriver: `./node_modules/protractor/node_modules/webdriver-manager/selenium/chromedriver_2.24${process.platform.indexOf('win') === 0 ? '.exe' : ''}`,
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
   framework: 'jasmine',
