@@ -3,10 +3,10 @@
         <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
             <thead>
                 <tr>
-                    <th class="mdl-data-table__cell--non-numeric">Material</th>
-                    <th>Quantity</th>
-                    <th>Unit price</th>
-                    <th>Total price</th>
+                    <th class="mdl-data-table__cell--non-numeric">{{ 'cart.product' | translate }}</th>
+                    <th>{{ 'cart.quantity' | translate }}</th>
+                    <th>{{ 'cart.unit_price' | translate }}</th>
+                    <th>{{ 'cart.total_price' | translate }}</th>
                     <th></th>
                 </tr>
             </thead>
@@ -35,11 +35,11 @@
         </table>
         <div>
             <button id="empty-cart" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" (click)="clearCart()">
-                Empty basket
+                {{ 'cart.empty_basket' | translate }}
             </button>
         </div>
     </div>
     <div *ngIf="cart.length === 0">
-        No item in basket
+        {{ 'cart.no_item' | translate }}
     </div>
 </div>

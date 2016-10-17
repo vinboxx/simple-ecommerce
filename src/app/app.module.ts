@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
+import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 
+import { SharedModule } from './shared/shared.module';
 import { StorageService } from './services/storage.service';
 import { CartService } from './services/cart.service';
 import { CatalogService } from './services/catalog.service';
@@ -30,7 +32,13 @@ import { CartComponent } from './components/cart/cart.component';
         BrowserModule,
         FormsModule,
         HttpModule,
-        SimpleEcommerceRoutingModule
+        SimpleEcommerceRoutingModule,
+        TranslateModule.forRoot({
+            provide: TranslateLoader,
+            useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
+            deps: [Http]
+        }),
+        SharedModule.forRoot(),
     ],
     providers: [
         StorageService,

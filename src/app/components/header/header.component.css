@@ -1,0 +1,18 @@
+.lang-switcher {
+    float: right;
+    padding-left: 10px;
+    padding-top: 2px;
+}
+.lang-link {
+    padding: 3px 8px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 80%;
+    display: inline-block;
+    text-align: center;
+}
+.lang-link.active {
+    color: rgb(63, 81, 181);
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 4px;
+}

@@ -1,0 +1,24 @@
+{
+    "app title": "Ng2 Simple Handlekurv",
+    "button": {
+        "buy": "Kjøp"
+    },
+    "cart.product" : "Produkt",
+    "cart.quantity" : "Mengde",
+    "cart.unit_price" : "Enhetspris",
+    "cart.total_price" : "Totalpris",
+    "cart.empty_basket" : "Slett handlekurv",
+    "cart.no_item" : "Ingen varer i handlekurven",
+    "hello world": "Hei verden",
+    "hello greet": "Hei, {{txt1}} {{txt2}}!",
+    "well done": "Bra jobba {{name}}",
+    "topmenu": {
+        "home": "Hjem",
+        "catalog": "katalog",
+        "aboutus": "om oss"
+    },
+    "product.price": "Pris",
+    "product.rating": "Vurdering",
+    "page_not_found": "Side ikke funnet",
+    "matching products": "Matchende Produkter"
+}

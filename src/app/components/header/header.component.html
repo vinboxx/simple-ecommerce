@@ -4,16 +4,20 @@
     <!-- Title -->
     <span class="mdl-layout-title">{{appTitle}}</span>
     <div class="mdl-layout-spacer"></div>
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                mdl-textfield--floating-label mdl-textfield--align-right">
-      <label class="mdl-button mdl-js-button mdl-button--icon"
-             for="waterfall-exp">
-        <i class="material-icons">search</i>
-      </label>
-      <div class="mdl-textfield__expandable-holder">
-        <input class="mdl-textfield__input" type="text" name="sample"
-               id="waterfall-exp">
-      </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label class="mdl-button mdl-js-button mdl-button--icon" for="waterfall-exp">
+            <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+            <input class="mdl-textfield__input" type="text" name="sample" id="waterfall-exp">
+        </div>
+        <div class="lang-switcher">
+            <a *ngFor="let lang of supportedLangs"
+                (click)="selectLang(lang.value)"
+                class="lang-link" [class.active]="isCurrentLang(lang.value)">
+                {{ lang.display }}
+            </a>
+        </div>
     </div>
   </div>
   <!-- Bottom row, not visible on scroll -->
@@ -21,9 +25,9 @@
     <div class="mdl-layout-spacer"></div>
     <!-- Navigation -->
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" routerLink="/" routerLinkActive="active">Home</a>
-      <a class="mdl-navigation__link" routerLink="/catalog" routerLinkActive="active">Catalog</a>
-      <a class="mdl-navigation__link" routerLink="/about-us" routerLinkActive="active">About us</a>
+      <a class="mdl-navigation__link" routerLink="/" routerLinkActive="active">{{'topmenu.home' | translate | uppercase}}</a>
+      <a class="mdl-navigation__link" routerLink="/catalog" routerLinkActive="active">{{'topmenu.catalog' | translate | uppercase}}</a>
+      <a class="mdl-navigation__link" routerLink="/about-us" routerLinkActive="active">{{'topmenu.aboutus' | translate | uppercase}}</a>
       <a class="mdl-navigation__link" routerLink="/basket" routerLinkActive="active">
         <i class="material-icons">shopping_cart</i>
         (<span class="cart-total-item">{{cartTotalItem}}</span>)
@@ -34,9 +38,9 @@
 <div class="mdl-layout__drawer">
   <span class="mdl-layout-title">{{appTitle}}</span>
   <nav class="mdl-navigation">
-    <a class="mdl-navigation__link" routerLink="/" routerLinkActive="active">Home</a>
-    <a class="mdl-navigation__link" routerLink="/catalog" routerLinkActive="active">Catalog</a>
-    <a class="mdl-navigation__link" routerLink="/about-us" routerLinkActive="active">About us</a>
+    <a class="mdl-navigation__link" routerLink="/" routerLinkActive="active">{{'topmenu.home' | translate | uppercase}}</a>
+    <a class="mdl-navigation__link" routerLink="/catalog" routerLinkActive="active">{{'topmenu.catalog' | translate | uppercase}}</a>
+    <a class="mdl-navigation__link" routerLink="/about-us" routerLinkActive="active">{{'topmenu.aboutus' | translate | uppercase}}</a>
     <a class="mdl-navigation__link" routerLink="/basket" routerLinkActive="active"><i class="material-icons">shopping_cart</i></a>
   </nav>
 </div>
