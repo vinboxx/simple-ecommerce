@@ -12,6 +12,8 @@ module.exports = function (config) {
       require('angular-cli/plugins/karma')
     ],
     files: [
+      { pattern: './src/assets/i18n/*.json', included: false, watched: true, served: true },
+      { pattern: './src/assets/img/*.*', included: false, watched: true, served: true },
       { pattern: './src/test.ts', watched: false }
     ],
     preprocessors: {
@@ -28,6 +30,11 @@ module.exports = function (config) {
       environment: 'dev'
     },
     reporters: ['progress', 'karma-remap-istanbul'],
+    // proxied base paths
+    proxies: {
+        // required for component assets fetched by Angular's compiler
+        '/assets': '/base/src/assets'
+    },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,

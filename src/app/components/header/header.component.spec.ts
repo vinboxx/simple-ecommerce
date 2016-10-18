@@ -1,9 +1,10 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
-
+import { Http } from '@angular/http';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 
 import { HeaderComponent } from './header.component';
 import { CartService } from '../../services/cart.service';
@@ -25,6 +26,13 @@ describe('Component: Header', () => {
             providers: [
                 CartService,
                 StorageService
+            ],
+            imports: [
+                TranslateModule.forRoot({
+                    provide: TranslateLoader,
+                    useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
+                    deps: [Http]
+                })
             ]
         });
 
@@ -33,6 +41,8 @@ describe('Component: Header', () => {
 
         // Get component instance
         comp = fixture.componentInstance; // HeaderComponent test instance
+
+        comp.refreshText();
     });
 
     it('should create an instance', () => {

@@ -1,7 +1,9 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject, ComponentFixture } from '@angular/core/testing';
+import { Http } from '@angular/http';
 import { Router } from '@angular/router';
+import { TranslateModule, TranslateService, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 
 import { CatalogComponent } from './catalog.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -29,6 +31,13 @@ describe('Component: Catalog', () => {
                     provide: Router,
                     useClass: class { navigate = jasmine.createSpy('navigate'); }
                 }
+            ],
+            imports: [
+                TranslateModule.forRoot({
+                    provide: TranslateLoader,
+                    useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
+                    deps: [Http]
+                })
             ]
         });
 

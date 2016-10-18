@@ -1,9 +1,11 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject, ComponentFixture } from '@angular/core/testing';
-import { ProductComponent } from './product.component';
-
+import { Http } from '@angular/http';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateModule, TranslateService, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
+
+import { ProductComponent } from './product.component';
 import { CatalogService } from '../../services/catalog.service';
 import { CartService } from '../../services/cart.service';
 import { StorageService } from '../../services/storage.service';
@@ -33,6 +35,13 @@ describe('Component: Product', () => {
                 CatalogService,
                 CartService,
                 StorageService
+            ],
+            imports: [
+                TranslateModule.forRoot({
+                    provide: TranslateLoader,
+                    useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
+                    deps: [Http]
+                })
             ]
         });
 
